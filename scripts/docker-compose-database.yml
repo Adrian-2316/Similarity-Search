@@ -1,0 +1,24 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:12.3
+    expose:
+      - 5432
+    networks:
+      - default
+    ports:
+      - "54321:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_DB: products
+      POSTGRES_PASSWORD: 00165fc2-2fe0-4d2d-b330-29209071091
+
+networks:
+  default:
+    external:
+      name: client
+volumes:
+  postgres:

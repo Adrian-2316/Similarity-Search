@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  client:
+    container_name: client
+    hostname: client
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    networks:
+      - default
+    expose:
+      - 5000
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+networks:
+  default:
+    external:
+      name: client
